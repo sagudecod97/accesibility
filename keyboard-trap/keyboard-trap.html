@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./index.js" defer></script>
+  <link rel="stylesheet" href="./index.css">
+  <title>Keyboard Trap</title>
+</head>
+
+<body>
+  <main>
+    <button class="open-modal">Open Modal</button>
+
+    <div class="modal">
+      <div class="modal__container" tabindex="-1">
+        <h2>Newsletter subscription</h2>
+
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus voluptatem vero tempora nulla a
+          quasi minus quae quo, suscipit eaque eos fuga maiores nemo corrupti, consectetur, inventore
+          laboriosam ut possimus!
+        </p>
+
+        <form class="modal__info">
+          <label for="full-name">Full name:</label>
+          <input type="text" name="full-name">
+
+          <label for="email">Email:</label>
+          <input type="email" name="email">
+
+          <button class="modal__submit" type="submit">Sign me Up</button>
+        </form>
+
+        <button class="modal__cancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
