@@ -16,9 +16,12 @@ const toggleModal = (event) => {
 
   if (!modalComponent.classList.contains('--open-modal')) {
     modalComponent.classList.add('--open-modal');
+    
+    lastFocusedItem = document.activeElement;
     modalContainerComponent.focus();
   } else {
     modalComponent.classList.remove('--open-modal');
+    lastFocusedItem.focus();
   }
 };
 
@@ -29,21 +32,27 @@ modalComponent.addEventListener('keydown', (event) => {
   let focusableElements = modalComponent.querySelectorAll(focusableElementsString);
   focusableElements = Array.from(focusableElements);
 
-  const firsFocusableElement = focusableElements[0];
+  const firstFocusableElement = focusableElements[0];
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
   if (event.key === 'Tab') {
     if (event.shiftKey) {
-      if (document.activeElement === firsFocusableElement) {
+      if (document.activeElement === modalContainerComponent) {
+        firstFocusableElement.focus();
+      } else if (document.activeElement === firstFocusableElement) {
         event.preventDefault();
         lastFocusableElement.focus();
       }
     } else {
       if (document.activeElement === lastFocusableElement) {
         event.preventDefault();
-        firsFocusableElement.focus();
+        firstFocusableElement.focus();
       }
     }
+  }
+
+  if (event.key === 'Escape') {
+    toggleModal(event);
   }
 });
 
